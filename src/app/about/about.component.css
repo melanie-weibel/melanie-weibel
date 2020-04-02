@@ -1,0 +1,100 @@
+.jumbotron {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+  border-bottom-left-radius : 0px;
+  border-bottom-right-radius: 0px;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+@media (max-width: 480px), (max-height:480px){
+  .jumbotron {
+    padding-top : 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron h1 {
+  font-weight: 300;
+  color:black;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.card-body {
+  color : black;
+}
+
+.container {
+  color : black;
+}
+
+.nav {
+  text-align:left;
+}
+
+
+.part-title {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 1rem;
+  margin-top:1rem;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .part-title {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.table-content-title {
+  padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.about h2 {
+  margin-top:5vh;
+  margin-left:20vh;
+  margin-right:20vh;
+}
+
+.left-text{
+  text-align:left;
+}

@@ -8,19 +8,28 @@ import { ContenteditableDirective } from './directives/contenteditable.directive
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { PlotItComponent } from './projects/plot-it/plot-it.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContenteditableDirective
+    ContenteditableDirective,
+    PlotItComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     DragDropModule,
     FormsModule,
     CommonModule,
-    NgSelectModule
+    NgSelectModule,
+    MatListModule,
+    MatMenuModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

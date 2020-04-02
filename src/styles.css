@@ -1,2 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #f8f9fa;
+  border-radius: .3rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(85, 89, 92,.7);
+  border-radius: .3rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(85, 89, 92);
+}
+
+::-webkit-scrollbar {
+  width: 1em;
+}
+
+@media (max-width: 480px), (max-height:480px){ /*sm value*/
+  h3.mobile-friendly{
+    font-size: 1.25rem;
+  }
+  h1.mobile-friendly{
+    font-size: 1.5rem;
+  }
+  .card-title,p.mobile-friendly,.btn.mobile-friendly{
+    font-size: 1rem;
+  }
+  .nav-link.mobile-friendly{
+    font-size: 0.9rem;
+  }
+  .card-body .btn,.card-text,.ft.mobile-friendly{
+    font-size: 0.7rem;
+  }
+  ::-webkit-scrollbar {
+    width: 0.7em;
+  }
+  .btn-lg{
+    padding: .4rem 0.8rem;
+  }
+  .mobile-nodisplay {
+    display:none;
+  }
+  .page-title {
+    margin-bottom:2rem;
+  }
+  .album {
+    padding-top:1rem!important;
+  }
+}
+
+

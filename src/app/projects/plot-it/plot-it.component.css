@@ -1,0 +1,288 @@
+.page {
+  width:100%;
+  font-family: 'Assistant', sans-serif;
+}
+
+/**left menu**/
+.leftMenu{
+  display:inline-block;
+  vertical-align:top;
+  width:350px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+
+/**right display**/
+.rightDisplay{
+  display:inline-block;
+  border : 1px black;
+  margin-left:20px;
+  height : 900px;
+  background-color: lightgray;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+/* Table chapitre et en-tête*/
+.chapterTable {
+  margin-top : 10px;
+  background-color: lightblue;
+}
+.chapterTableName {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  background-color: rgb(73, 170, 202);
+  cursor: pointer;
+}
+.chapterTableName:hover {
+  background-color: rgba(73, 170, 202, 0.8);
+}
+
+/* Table element et en-tête*/
+.elementTable {
+  margin-top: 20px;
+  background-color:lightsteelblue;
+}
+.elementTableName {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  background-color: rgb(99, 151, 219);
+  cursor: pointer;
+}
+.elementTableName:hover {
+  background-color: rgba(99, 151, 219, 0.8);
+}
+.toggleGroupIcon {
+  margin-left:30px;
+}
+
+/**************************************************************Group************************************************/
+/*Block et ligne*/
+/*.groupBlock {}*/
+.groupRow {
+  background-color: darkorange;
+  border-radius: 5px;
+  border:1px solid lightgray;
+  font-family: 'Assistant', sans-serif;
+  padding-top:5px;
+  padding-bottom: 5px;
+}
+.groupData {
+  padding-bottom: 5px;
+}
+/*Contenu de la ligne*/
+.dragGroupHandle {
+  margin-left:5px;
+  margin-right:5px;
+}
+.deleteGroupButton {
+  color: red;
+}
+.groupName {
+  display: inline;
+  padding-right:5px;
+  padding-left: 5px;
+  margin-right:5px;
+  margin-left:5px;
+  padding-bottom: 5px;
+}
+.groupName:empty:before{
+  content: attr(placeholder);
+  pointer-events: none;
+  font-weight: lighter;
+  font-style: italic;
+}
+.toggleDetailButton {
+  display:inline;
+  position: absolute;
+  left: 320px;
+  padding-top: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/*Placeholder*/
+.dragGroupPlacehoder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 20px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+/*Ligne d'ajout*/
+.addCategory {
+  width:100%;
+  color:rgb(30, 116, 30);
+  border-style:none;
+}
+
+
+/***********************************************Detail**********************************************************/
+/*Block et ligne*/
+.detailBlock {
+  margin-left:10px;
+  margin-right: 10px;
+}
+.detailRow {
+  background-color: rgb(255, 191, 14);
+  border:1px solid lightgray;
+  border-radius: 5px;
+  font-family: 'Assistant', sans-serif;
+}
+/*Contenu de la ligne*/
+.dragDetailHandle {
+  margin-left:5px;
+  margin-right:5px;
+}
+.deleteDetailButton {
+  color: red;
+}
+.detailName {
+  margin-right:5px;
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  display: inline;
+}
+.detailName:empty:before{
+  content: attr(placeholder);
+  pointer-events: none;
+  font-weight: lighter;
+  font-style: italic;
+}
+.linkedGroup {
+  display:inline-block;
+}
+/*Placeholder*/
+.dragDetailPlacehoder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 20px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+/*Ligne d'ajout*/
+.addDetail {
+  width:330px;
+  margin-left:10px;
+  margin-right:10px;
+  color:rgb(30, 116, 30);
+  border-style:none;
+  border-radius: 5px;
+}
+
+.detailRow cdk-drag-preview{
+  font-family: 'Assistant', sans-serif;
+}
+.groupRow cdk-drag-preview{
+  font-family: 'Assistant', sans-serif;
+}
+.detailRow cdk-drag-dragging{
+  font-family: 'Assistant', sans-serif;
+}
+.groupRow cdk-drag-dragging{
+  font-family: 'Assistant', sans-serif;
+}
+
+
+/*************************************Drag and drop animation**************************/
+/*.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.groupBlock.cdk-drop-list-dragging .groupRow:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.detailBlock.cdk-drop-list-dragging .detailRow:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}*/
+
+
+
+
+/*** Boutons d'action ***/
+.button {
+  background-color: lightgrey;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width:100%;
+  margin-bottom: 10px;
+  border-width:2px;
+  border-style: outset;
+  border-color: buttonface;
+  border-image: initial;
+  box-sizing: border-box;
+}
+
+#saveButton {
+  width:100%;
+}
+
+
+
+
+.note {
+  display:inline-block;
+  width : 150px;
+  height:150px;
+  border:1px solid white;
+  background-color: rgb(255, 191, 14);
+  border-radius: 5px;
+}
+.noteTitleBox {
+  border-bottom:1px solid white;
+  border-radius:5px;
+  height:30 px;
+  font-weight:bold;
+  font-size:20px;
+  background-color: darkorange;
+}
+.dragNoteHandle {
+  display:inline-block;
+  margin-right:5px;
+  margin-left:5px;
+}
+.noteTitle {
+  display:inline;
+  text-align: center;
+  padding-left:5px;
+  padding-right:5px;
+}
+.noteTitle:empty:before{
+  content: attr(placeholder);
+  pointer-events: none;
+  font-weight: lighter;
+  font-style: italic;
+}
+.noteContentBox {
+  margin-top : 10px;
+  padding-left:5px;
+  padding-right:5px;
+
+}
+.noteContentBox:empty:before{
+  content: attr(placeholder);
+  pointer-events: none;
+  font-weight: lighter;
+  font-style: italic;
+}
+.right-display.cdk-drop-list-dragging .note:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

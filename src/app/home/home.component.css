@@ -1,0 +1,32 @@
+.multi .btn {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.home{
+  background: url("/assets/img/placeholder.jfif") no-repeat center fixed;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+  border-radius: .3rem;
+}
+
+
+@media (max-width: 480px), (max-height:480px){ /*sm value*/
+  .multi .btn {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .lead.mobile-friendly{
+    margin-left: 1rem!important;
+    margin-right: 1rem!important;
+  }
+  .multi{
+    margin-top: -0.5rem;
+    margin-bottom: 0rem;
+  }
+  p.multi{
+    margin-bottom: 0rem;
+  }
+}

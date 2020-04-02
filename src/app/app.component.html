@@ -1,180 +1,29 @@
-<div class="page">
-<div class="leftMenu">
-  <div>
-    <label for="files" class="button" id="loadFiles">CHARGER PROJET</label>
-    <input type="file" id="files" style="display:none" multiple (change)="loadData($event)" />
-  </div>
-
-  <div>
-    <button class="button" id="saveButton" (click)="saveData()">SAUVEGARDER</button>
-  </div>
-
-  <div class="chapterTable">
-    <div class="chapterTableName" (click)="toggleChapterGroups()">Contenu des Chapitres
-      <i *ngIf="showChapter" class="toggleGroupIcon fas fa-caret-square-up"></i>
-      <i *ngIf="!showChapter" class="toggleGroupIcon fas fa-caret-square-down"></i>
-    </div>
-
-    <ng-container *ngIf="showChapter">
-      <div cdkDropList class="groupBlock" (cdkDropListDropped)="dropChapter($event)">
-        <ng-container *ngFor="let group of chapters; let groupIndex = index">
-          <div class="groupRow" cdkDrag>
-            <div class="groupData">
-              <i class="dragGroupHandle fas fa-arrows-alt" cdkDragHandle></i>
-              <i class="deleteGroupButton fas fa-trash-alt" (click)="deleteChapterGroup(groupIndex)"></i>
-              <div class="dragGroupPlacehoder" *cdkDragPlaceholder></div>
-              <div class="groupName" contenteditable placeholder="Enter text here" [(ngModel)]="group.name"></div>
-              <i *ngIf="group.showDetail" class="toggleDetailButton fas fa-caret-square-up"
-                (click)="group.toggleDetails()"></i>
-              <i *ngIf="!group.showDetail" class="toggleDetailButton fas fa-caret-square-down"
-                (click)="group.toggleDetails()"></i>
-              </div>
-
-
-            <ng-container *ngIf="group.showDetail">
-              <div cdkDropList class="detailBlock" (cdkDropListDropped)="dropDetail($event)">
-
-                <ng-container *ngFor="let detail of details; let detailIndex = index">
-                  <ng-container *ngIf="detail.associatedChapter">
-                    <ng-container *ngIf="detail.associatedChapter.id===group.id">
-                      <div class="detailRow" cdkDrag>
-                          <i class="dragDetailHandle fas fa-arrows-alt" cdkDragHandle></i>
-                          <i class="deleteDetailButton fas fa-trash-alt"
-                            (click)="deleteDetail(detailIndex, 'dissociate')"></i>
-                          <div class="dragDetailPlacehoder" *cdkDragPlaceholder></div>
-
-                          <div class="detailName" contenteditable placeholder="Enter text here"
-                            [(ngModel)]="detail.name"></div>
-
-                          <ng-container *ngIf="detail.associatedElement">
-                            <ng-select class="linkedGroup" [items]="elements" bindValue="id" bindLabel="name"
-                              [(ngModel)]="detail.associatedElement.id"
-                              (change)="detail.selectNewAssociatedElement($event)">
-                            </ng-select>
-                          </ng-container>
-
-                          <ng-container *ngIf="!detail.associatedElement">
-                            <ng-select class="linkedGroup" [items]="elements" bindValue="id" bindLabel="name"
-                              (change)="detail.selectNewAssociatedElement($event)">
-                            </ng-select>
-                          </ng-container>
-                        </div>
-
-                    </ng-container>
-                  </ng-container>
-                </ng-container>
-
-              </div>
-              <button class="addDetail" (click)="addDetail('chapter', group)">
-                <i class="fas fa-plus-square"></i>
-              </button>
-            </ng-container>
-          </div>
-
-
-
-        </ng-container>
-
-      </div>
-      <button class="addCategory" (click)="addChapterGroup()">
-        <i class="fas fa-plus-square"></i>
-      </button>
-    </ng-container>
-
-  </div>
-
-  <div class="elementTable">
-    <div class="elementTableName" (click)="toggleElementGroups()">Contenu des Chapitres
-      <i *ngIf="showElement" class="toggleGroupIcon fas fa-caret-square-up"></i>
-      <i *ngIf="!showElement" class="toggleGroupIcon fas fa-caret-square-down"></i>
-    </div>
-
-    <ng-container *ngIf="showElement">
-      <div cdkDropList class="groupBlock" (cdkDropListDropped)="dropElement($event)">
-        <ng-container *ngFor="let group of elements; let groupIndex = index">
-          <div class="groupRow" cdkDrag>
-            <div class="groupData">
-              <i class="dragGroupHandle fas fa-arrows-alt" cdkDragHandle></i>
-              <i class="deleteGroupButton fas fa-trash-alt" (click)="deleteElementGroup(groupIndex)"></i>
-              <div class="dragGroupPlacehoder" *cdkDragPlaceholder></div>
-              <div class="groupName" contenteditable placeholder="Enter text here" [(ngModel)]="group.name"></div>
-              <i *ngIf="group.showDetail" class="toggleDetailButton fas fa-caret-square-up"
-                (click)="group.toggleDetails()"></i>
-              <i *ngIf="!group.showDetail" class="toggleDetailButton fas fa-caret-square-down"
-                (click)="group.toggleDetails()"></i>
-              </div>
-
-            <ng-container *ngIf="group.showDetail">
-              <div cdkDropList class="detailBlock" (cdkDropListDropped)="dropDetail($event)">
-
-                <ng-container *ngFor="let detail of details; let detailIndex = index">
-                  <ng-container *ngIf="detail.associatedElement">
-                    <ng-container *ngIf="detail.associatedElement.id===group.id">
-                      <div class="detailRow" cdkDrag>
-                        <i class="dragDetailHandle fas fa-arrows-alt" cdkDragHandle></i>
-                        <i class="deleteDetailButton fas fa-trash-alt"
-                          (click)="deleteDetail(detailIndex, 'suppress')"></i>
-                        <div class="dragDetailPlacehoder" *cdkDragPlaceholder></div>
-                        <div class="detailName" contenteditable placeholder="Enter text here" [(ngModel)]="detail.name">
-                        </div>
-
-                        <ng-container *ngIf="detail.associatedChapter">
-                          <ng-select class="linkedGroup" [items]="chapters" bindValue="id" bindLabel="name"
-                            [(ngModel)]="detail.associatedChapter.id"
-                            (change)="detail.selectNewAssociatedChapter($event)">
-                          </ng-select>
-                        </ng-container>
-
-                        <ng-container *ngIf="!detail.associatedChapter">
-                          <ng-select class="linkedGroup" [items]="chapters" bindValue="id" bindLabel="name"
-                            (change)="detail.selectNewAssociatedChapter($event)">
-                          </ng-select>
-                        </ng-container>
-
-                      </div>
-                    </ng-container>
-                  </ng-container>
-                </ng-container>
-
-              </div>
-              <button class="addDetail" (click)="addDetail('element', group)">
-                <i class="fas fa-plus-square"></i>
-              </button>
-            </ng-container>
-          </div>
-
-
-
-        </ng-container>
-
-      </div>
-      <button class="addCategory" (click)="addElementGroup()">
-        <i class="fas fa-plus-square"></i>
-      </button>
-    </ng-container>
-
-  </div>
-
-</div>
-
-<div class="rightDisplay" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropNote($event)">
-    <ng-container *ngFor="let note of details; let noteIndex = index">
-      <ng-container *ngIf="note.associatedChapter">
-        <div class="note" cdkDragBoundary=".rightDisplay" cdkDrag>
-          <div class="dragNotePlacehoder" *cdkDragPlaceholder></div>
-          <div class="noteTitleBox">
-            <i class="dragNoteHandle fas fa-arrows-alt" cdkDragHandle></i>
-            <div class="noteTitle" contenteditable placeholder="Chapter" [(ngModel)]="note.associatedChapter.name"></div>
-          </div>
-          <div class="noteContentBox">
-            <div class="noteContent" contenteditable placeholder="Write content here" [(ngModel)]="note.name"></div>
-          </div>
+<div class="text-center">
+  <div class="d-flex h-100 p-3 flex-column w-100">
+    <div class="cover-container mx-auto w-100 mb-3">
+      <header class="masthead">
+        <div class="inner">
+          <h3 class="masthead-brand mobile-friendly">Mel's little world</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link mobile-friendly" routerLink="home" routerLinkActive="active">Home</a>
+            <a class="nav-link mobile-friendly" routerLink="projects" routerLinkActive="active">Projects</a>
+            <a class="nav-link mobile-friendly" routerLink="gallery" routerLinkActive="active">Gallery</a>
+            <a class="nav-link mobile-friendly" routerLink="about" routerLinkActive="active">About me</a>
+          </nav>
         </div>
+      </header>
+    </div>
 
-      </ng-container>
-    </ng-container>
-  <div id=timelineblock></div>
-</div>
+    <main role="main" class="inner cover px-auto py-auto h-100">
+      <router-outlet></router-outlet>
+    </main>
 
-<router-outlet></router-outlet>
+    <footer class="mastfoot">
+      <div class="inner">
+        <p class="ft mobile-friendly">Contact me at <a href="mailto:weibel.melanie.pro@gmail.com">weibel.melanie.pro@gmail.com</a> for any
+          question.
+          Feedback appreciated!</p>
+      </div>
+    </footer>
+  </div>
 </div>
